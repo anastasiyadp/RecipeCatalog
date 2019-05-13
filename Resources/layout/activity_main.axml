@@ -1,7 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-</RelativeLayout>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+	<Button
+		android:text="Добавить новый рецепт"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/button4" />
+	<ListView
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_width="384.5dp"
+		android:layout_height="221.5dp"
+		android:id="@+id/listView1"
+		android:layout_marginRight="110.0dp" />
+
+	<EditText
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text ="dfsdf"
+		android:id="@+id/editText1" />
+	<EditText
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text ="dfsdf"
+		android:id="@+id/editText2" />
+	<Button
+		android:text="Добавить"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/button5" />
+	<Button
+		android:text="Сохранить"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/button2" />
+	<Button
+		android:text="Удалить"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/button3" />
+
+</LinearLayout>
