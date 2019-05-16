@@ -28,6 +28,8 @@ namespace RecipeCatalog
             SetContentView(Resource.Layout.activity_recipesList);
 
             TextView textNoRecipes = FindViewById<TextView>(Resource.Id.textNoRecipes);
+            listView = FindViewById<ListView>(Resource.Id.listRecipes);
+
             textNoRecipes.Visibility = ViewStates.Invisible;
 
             dataBase = new DataBase("demo.db3");
@@ -40,22 +42,18 @@ namespace RecipeCatalog
             var recipes = dataBase.db.GetAllWithChildren<Recipe>().Where(y => y.id_category == category.Id);
 
             List<Recipe> recipesList = new List<Recipe>(recipes);
-            if (recipesList.Count != 0)
+            if (recipesList.Count == 0)
             {
-                foreach (var s in recipesList)
-                {
-                    listRecipes.Add(s);
-                    Console.WriteLine(s.Id + " " + s.name + " " + s.instruction + " " + s.Category.name);
-                }
+                textNoRecipes.Visibility = ViewStates.Visible;
+                return;
             }
-            else textNoRecipes.Visibility = ViewStates.Visible;
 
-            listView = FindViewById<ListView>(Resource.Id.listRecipes);
-            listView.Adapter = new AdapterRecipe(this, listRecipes);
-            listView.ItemClick += (sender, e) =>
+            
+            listView.Adapter = new AdapterRecipe(this, recipesList);
+            listView.ItemClick += (sender, arg) =>
             {
                 var intent = new Intent(this, typeof(RecipeActivity));
-                recipe = listRecipes[e.Position];
+                recipe = listRecipes[arg.Position];
                 intent.PutExtra("recipeId", recipe.Id);
                 StartActivity(intent);
             };

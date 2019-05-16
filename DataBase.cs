@@ -32,13 +32,12 @@ namespace RecipeCatalog
             string dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), dbName);
             
             db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), dbPath));
-                    
+                
             db.CreateTable<Recipe>();
             db.CreateTable<Category>();
             db.CreateTable<Product>();
             db.CreateTable<Ingredients>();
             CreateNotesInTables();
-           
         }
 
         public void CreateNotesInTables()

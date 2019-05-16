@@ -20,7 +20,7 @@ namespace RecipeCatalog.Models
         public int Id { get; set; }
         public string name { get; set; }
 
-        [OneToMany]  //????
+        [OneToMany]  
         public List<Recipe> recipes { get; set; }
     }
 }
