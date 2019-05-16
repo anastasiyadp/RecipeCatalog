@@ -18,8 +18,8 @@ namespace RecipeCatalog.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string name;
-        public string unitMeasure;
+        public string name { get; set; }
+        public string unitMeasure { get; set; }
 
         [ManyToMany(typeof(Ingredients))]
         public List<Recipe> recipes { get; set; }

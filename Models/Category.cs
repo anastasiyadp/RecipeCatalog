@@ -18,7 +18,7 @@ namespace RecipeCatalog.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string name;
+        public string name { get; set; }
 
         [OneToMany]  //????
         public List<Recipe> recipes { get; set; }

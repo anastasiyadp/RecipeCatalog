@@ -63,6 +63,8 @@
     <Compile Include="Models\Ingredients.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Recipe.cs" />
+    <Compile Include="RecipeActivity.cs" />
+    <Compile Include="RecipesListActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -107,7 +109,17 @@
     <PackageReference Include="Xamarin.Android.Support.Design" Version="26.1.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\rowRecipe.axml">
+    <AndroidResource Include="Resources\layout\rowRecipesList.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_recipesList.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_recipe.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

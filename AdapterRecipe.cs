@@ -9,15 +9,16 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using RecipeCatalog.Models;
 
 namespace RecipeCatalog
 {
-    class AdapterRecipe: BaseAdapter<Stock>
+    class AdapterRecipe: BaseAdapter<Recipe>
     {
-        List<Stock> recipes;
+        List<Recipe> recipes;
         Activity context;
 
-        public AdapterRecipe(Activity context, List<Stock> recipes) : base()
+        public AdapterRecipe(Activity context, List<Recipe> recipes) : base()
         {
             this.context = context;
             this.recipes = recipes;
@@ -28,7 +29,7 @@ namespace RecipeCatalog
             return position;
         }
 
-        public override Stock this[int position]
+        public override Recipe this[int position]
         {
             get { return recipes[position]; }
         }
@@ -41,14 +42,15 @@ namespace RecipeCatalog
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            Stock recipe = recipes[position];
+            Recipe recipe = recipes[position];
             string name = recipe.name;
             View view = convertView;
-            if (view == null) view = context.LayoutInflater.Inflate(Resource.Layout.rowRecipe, null);
+            if (view == null) view = context.LayoutInflater.Inflate(Resource.Layout.rowRecipesList, null);
 
-            String nameDrink = view.FindViewById<TextView>(Resource.Id.textView1).Text = recipe.Id.ToString();
-            String priceDrink = view.FindViewById<TextView>(Resource.Id.textView2).Text = recipe.name;
-            String countDrink = view.FindViewById<TextView>(Resource.Id.textView3).Text = recipe.instruction;
+            String nameCategory = view.FindViewById<TextView>(Resource.Id.textCategoryRecipe).Text = recipe.Category.name;
+            String nameRecipe = view.FindViewById<TextView>(Resource.Id.textNameRecipe).Text = recipe.name;
+            String instructionRecipe = view.FindViewById<TextView>(Resource.Id.textInstructionRecipe).Text = recipe.instruction;
+            
             return view;
         }
     }

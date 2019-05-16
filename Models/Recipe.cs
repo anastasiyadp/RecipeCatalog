@@ -16,14 +16,17 @@ namespace RecipeCatalog.Models
 {
     class Recipe
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey, AutoIncrement, Column("_id")]
         public int Id { get; set; }
-        public string name;
-        public string instruction;
+        public string name { get; set; }
+        public string instruction { get; set; }
 
-      
+
         [ForeignKey(typeof(Category))]
         public int id_category { get; set; }
+
+        [ManyToOne]
+        public Category Category { get; set; }
 
         [ManyToMany(typeof(Ingredients))]
         public List<Product> products { get; set; }
