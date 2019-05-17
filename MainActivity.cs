@@ -17,34 +17,35 @@ namespace RecipeCatalog
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        DataBase dataBase;
         ArrayAdapter<string> adapter;
         List<string> categories = new List<string>();
-
-
         ListView listView;
-        List<Recipe> listRecipes;
         
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
 
-            dataBase = new DataBase("demo.db3");
+            DataBase.CreateDataBase("demo.db3");
             
             listView = FindViewById<ListView>(Resource.Id.listCategories);
 
-            var tableCategory = dataBase.db.Table<Category>();
-            foreach (var category in tableCategory)
-            {
-                categories.Add(category.name);
+            using (DataBase.db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), DataBase.dbPath))) {
+                var tableCategory = DataBase.db.Table<Category>();
+
+                foreach (Category category in tableCategory)
+                {
+                    categories.Add(category.name);
+                }
+                DataBase.db.Close();
             }
+
             adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, categories);
             listView.Adapter = adapter;
-            listView.ItemClick += (sender, e) =>
+            listView.ItemClick += (sender, arg) =>
             {
-                var intent = new Intent(this, typeof(RecipesListActivity));
-                string categoryName = categories[e.Position];
+                Intent intent = new Intent(this, typeof(RecipesListActivity));
+                string categoryName = categories[arg.Position];
                 intent.PutExtra("categoryName", categoryName);
                 StartActivity(intent);
             };

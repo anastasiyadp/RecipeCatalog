@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -10,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using RecipeCatalog.Models;
+using SQLite;
 using SQLiteNetExtensions.Extensions;
 
 namespace RecipeCatalog
@@ -17,10 +19,8 @@ namespace RecipeCatalog
     [Activity(Label = "RecipesListActivity")]
     public class RecipesListActivity : Activity
     {
-        DataBase dataBase;
-        ListView listView;
-        List<Recipe> listRecipes;
-        Recipe recipe;
+        List<Recipe> recipesList;
+        Recipe selectedRecipe;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -28,33 +28,32 @@ namespace RecipeCatalog
             SetContentView(Resource.Layout.activity_recipesList);
 
             TextView textNoRecipes = FindViewById<TextView>(Resource.Id.textNoRecipes);
-            listView = FindViewById<ListView>(Resource.Id.listRecipes);
+            ListView listView = FindViewById<ListView>(Resource.Id.listRecipes);
 
             textNoRecipes.Visibility = ViewStates.Invisible;
+            String txtName = Intent.GetStringExtra("categoryName"); ;
 
-            dataBase = new DataBase("demo.db3");
+            using (DataBase.db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), DataBase.dbPath)))
+            {
+                Category selectedCategory = DataBase.db.Table<Category>().FirstOrDefault(category => category.name == txtName);
+                var recipes = DataBase.db.GetAllWithChildren<Recipe>().Where(recipe => recipe.id_category == selectedCategory.Id);
+                recipesList = new List<Recipe>(recipes);
+                DataBase.db.Close();
+            };
 
-            String txtName = Intent.GetStringExtra("categoryName");
-            listRecipes = new List<Recipe>();
-            var table = dataBase.db.GetAllWithChildren<Recipe>();
-
-            Category category = dataBase.db.Table<Category>().FirstOrDefault(y => y.name == txtName);
-            var recipes = dataBase.db.GetAllWithChildren<Recipe>().Where(y => y.id_category == category.Id);
-
-            List<Recipe> recipesList = new List<Recipe>(recipes);
+            
             if (recipesList.Count == 0)
             {
                 textNoRecipes.Visibility = ViewStates.Visible;
                 return;
             }
 
-            
             listView.Adapter = new AdapterRecipe(this, recipesList);
             listView.ItemClick += (sender, arg) =>
             {
-                var intent = new Intent(this, typeof(RecipeActivity));
-                recipe = listRecipes[arg.Position];
-                intent.PutExtra("recipeId", recipe.Id);
+                Intent intent = new Intent(this, typeof(RecipeActivity));
+                selectedRecipe = recipesList[arg.Position];
+                intent.PutExtra("recipeId", selectedRecipe.Id);
                 StartActivity(intent);
             };
 
