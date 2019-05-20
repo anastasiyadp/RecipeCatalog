@@ -56,6 +56,7 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdapterProduct.cs" />
     <Compile Include="AdapterRecipe.cs" />
     <Compile Include="DataBase.cs" />
     <Compile Include="MainActivity.cs" />
@@ -121,6 +122,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_recipe.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\rowProduct.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

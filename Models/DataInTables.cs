@@ -19,6 +19,7 @@ namespace RecipeCatalog.Models
         static List<Recipe> recipes;
         static List<Category> categories;
         static List<Product> products;
+        static List<List<int>> mera;
 
         public static void CreateNotesInTables(string dbpath)
         {
@@ -97,14 +98,38 @@ namespace RecipeCatalog.Models
                     };
                     db.InsertAll(products);
 
-                    recipes[0].products = new List<Product> { products[1], products[5], products[11], products[13] };
+                    mera = new List<List<int>>();
+                    recipes[0].products = new List<Product> { products[1], products[5], products[6], products[11], products[13] };
+                    mera.Add( new List<int>() { 400, 2, 1, 1, 20});
                     recipes[1].products = new List<Product> { products[0], products[3], products[4], products[5], products[6], products[7], products[9], products[14] };
+                    mera.Add(new List<int>() { 700, 1, 6, 1, 1, 1, 300, 50 });
                     recipes[2].products = new List<Product> { products[1], products[3], products[4], products[6], products[7], products[15] };
+                    mera.Add(new List<int>() { 500, 1, 5, 1, 1, 300 });
                     recipes[3].products = new List<Product> { products[2], products[4], products[6], products[8], products[10], products[12], products[13] };
+                    mera.Add(new List<int>() { 400, 5, 1, 6, 1, 10, 50 });
 
                     foreach (Recipe recipe in recipes)
                     {
                         db.UpdateWithChildren(recipe);
+
+                    }
+
+                    for (int i = 0; i < recipes.Count; i++)
+                    {
+                        for (int j = 0; j < recipes[i].products.Count; j++)
+                        {
+                            Ingredients ingredient = db.Table<Ingredients>().ToList().First(y => (y.id_recipe == recipes[i].Id) && (y.id_product == recipes[i].products[j].Id));
+                            ingredient.quantity = mera[i][j];
+                            db.UpdateWithChildren(ingredient);
+                        }
+                    }
+
+                    
+
+                    var table = db.GetAllWithChildren<Ingredients>();
+                    foreach (var s in table)
+                    {
+                        Console.WriteLine("hehehehy  " + s.id_recipe + " " + s.id_product + " " + s.quantity );
                     }
 
                     categories[0].recipes = new List<Recipe> { recipes[1], recipes[2] };

@@ -16,6 +16,9 @@ namespace RecipeCatalog.Models
 {
     class Ingredients
     {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
         [ForeignKey(typeof(Recipe))]
         public int id_recipe { get; set; }
 

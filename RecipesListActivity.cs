@@ -35,7 +35,7 @@ namespace RecipeCatalog
 
             using (DataBase.db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), DataBase.dbPath)))
             {
-                Category selectedCategory = DataBase.db.Table<Category>().FirstOrDefault(category => category.name == txtName);
+                Category selectedCategory = DataBase.db.Table<Category>().First(category => category.name == txtName);
                 var recipes = DataBase.db.GetAllWithChildren<Recipe>().Where(recipe => recipe.id_category == selectedCategory.Id);
                 recipesList = new List<Recipe>(recipes);
                 DataBase.db.Close();
