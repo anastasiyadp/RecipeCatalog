@@ -2594,14 +2594,14 @@ namespace RecipeCatalog
 			// aapt resource value: 0x7f080060
 			public const int list_item = 2131230816;
 			
-			// aapt resource value: 0x7f0800b9
-			public const int masked = 2131230905;
+			// aapt resource value: 0x7f0800b8
+			public const int masked = 2131230904;
 			
 			// aapt resource value: 0x7f0800a4
 			public const int media_actions = 2131230884;
 			
-			// aapt resource value: 0x7f0800b7
-			public const int message = 2131230903;
+			// aapt resource value: 0x7f0800b6
+			public const int message = 2131230902;
 			
 			// aapt resource value: 0x7f080030
 			public const int middle = 2131230768;
@@ -2789,23 +2789,20 @@ namespace RecipeCatalog
 			// aapt resource value: 0x7f08001a
 			public const int text2 = 2131230746;
 			
+			// aapt resource value: 0x7f08008e
+			public const int textCategory = 2131230862;
+			
 			// aapt resource value: 0x7f08008b
 			public const int textCategoryAndName = 2131230859;
-			
-			// aapt resource value: 0x7f0800b4
-			public const int textCategoryRecipe = 2131230900;
 			
 			// aapt resource value: 0x7f08008d
 			public const int textInstruction = 2131230861;
 			
-			// aapt resource value: 0x7f0800b6
-			public const int textInstructionRecipe = 2131230902;
-			
 			// aapt resource value: 0x7f0800b5
-			public const int textNameRecipe = 2131230901;
+			public const int textInstructionRecipe = 2131230901;
 			
-			// aapt resource value: 0x7f08008e
-			public const int textNoRecipes = 2131230862;
+			// aapt resource value: 0x7f0800b4
+			public const int textNameRecipe = 2131230900;
 			
 			// aapt resource value: 0x7f080069
 			public const int textSpacerNoButtons = 2131230825;
@@ -2873,8 +2870,8 @@ namespace RecipeCatalog
 			// aapt resource value: 0x7f080016
 			public const int view_offset_helper = 2131230742;
 			
-			// aapt resource value: 0x7f0800b8
-			public const int visible = 2131230904;
+			// aapt resource value: 0x7f0800b7
+			public const int visible = 2131230903;
 			
 			// aapt resource value: 0x7f08003b
 			public const int withText = 2131230779;

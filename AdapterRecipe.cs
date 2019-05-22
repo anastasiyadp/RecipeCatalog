@@ -47,7 +47,6 @@ namespace RecipeCatalog
             View view = convertView;
             if (view == null) view = context.LayoutInflater.Inflate(Resource.Layout.rowRecipesList, null);
 
-            String nameCategory = view.FindViewById<TextView>(Resource.Id.textCategoryRecipe).Text = recipe.Category.name;
             String nameRecipe = view.FindViewById<TextView>(Resource.Id.textNameRecipe).Text = recipe.name;
             String instructionRecipe = view.FindViewById<TextView>(Resource.Id.textInstructionRecipe).Text = recipe.instruction;
             

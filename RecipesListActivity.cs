@@ -27,10 +27,10 @@ namespace RecipeCatalog
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_recipesList);
 
-            TextView textNoRecipes = FindViewById<TextView>(Resource.Id.textNoRecipes);
+            TextView textCategory = FindViewById<TextView>(Resource.Id.textCategory);
             ListView listView = FindViewById<ListView>(Resource.Id.listRecipes);
 
-            textNoRecipes.Visibility = ViewStates.Invisible;
+            //textCategory.Visibility = ViewStates.Invisible;
             String txtName = Intent.GetStringExtra("categoryName"); ;
 
             using (DataBase.db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), DataBase.dbPath)))
@@ -44,9 +44,11 @@ namespace RecipeCatalog
             
             if (recipesList.Count == 0)
             {
-                textNoRecipes.Visibility = ViewStates.Visible;
+                //textCategory.Visibility = ViewStates.Visible;
+                textCategory.Text = "Рецептов в этой категории ещё нет";
                 return;
             }
+            textCategory.Text = txtName;
 
             listView.Adapter = new AdapterRecipe(this, recipesList);
             listView.ItemClick += (sender, arg) =>
