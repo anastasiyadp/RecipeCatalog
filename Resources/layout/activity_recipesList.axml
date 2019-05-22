@@ -8,12 +8,16 @@
 		android:text="Рецептов в этой категории ещё нет"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:textSize = "33px"	
+		android:textAlignment = "center"
+		android:textColor = "#000000"
 		android:id="@+id/textNoRecipes" />
 	<ListView
 		android:minWidth="25px"
 		android:minHeight="25px"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
+		android:cacheColorHint="#FFDEAD"
 		android:id="@+id/listRecipes" />
 	
 </LinearLayout>

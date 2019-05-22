@@ -64,6 +64,7 @@
     <Compile Include="Models\DataInTables.cs" />
     <Compile Include="Models\Ingredients.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductForList.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="RecipeActivity.cs" />
     <Compile Include="RecipesListActivity.cs" />

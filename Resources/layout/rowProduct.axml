@@ -9,16 +9,19 @@
 		android:layout_height="25.0dp"
 		android:minWidth="25px"
 		android:minHeight="25px"
+		android:textColor = "#000000"
 		android:id="@+id/nameProduct" />
 	<TextView
 		android:text="Text"
 		android:layout_width="87.5dp"
 		android:layout_height="25.0dp"
+		android:textColor = "#000000"
 		android:id="@+id/quantityProduct" />
 	<TextView
 		android:text="Text"
 		android:layout_width="53.0dp"
 		android:layout_height="25.0dp"
+		android:textColor = "#000000"
 		android:id="@+id/unitMeasureProduct" />
 
 </LinearLayout>

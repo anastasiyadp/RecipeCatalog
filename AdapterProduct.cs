@@ -13,16 +13,16 @@ using RecipeCatalog.Models;
 
 namespace RecipeCatalog
 {
-    class AdapterProduct : BaseAdapter<Recipe>
+    class AdapterProduct : BaseAdapter<ProductForList>
     {
 
-       List<Recipe> recipes;
+       List<ProductForList> products;
         Activity context;
 
-        public AdapterProduct(Activity context, List<Recipe> recipes) : base()
+        public AdapterProduct(Activity context, List<ProductForList> products) : base()
         {
             this.context = context;
-            this.recipes = recipes;
+            this.products = products;
         }
 
         public override long GetItemId(int position)
@@ -30,27 +30,27 @@ namespace RecipeCatalog
             return position;
         }
 
-        public override Recipe this[int position]
+        public override ProductForList this[int position]
         {
-            get { return recipes[position]; }
+            get { return products[position]; }
         }
 
         public override int Count
         {
-            get { return recipes.Count;}
+            get { return products.Count;}
             
         }
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            Recipe recipe = recipes[position];
-            string name = recipe.name;
+            ProductForList product = products[position];
+            string name = product.name;
             View view = convertView;
-            if (view == null) view = context.LayoutInflater.Inflate(Resource.Layout.rowRecipesList, null);
+            if (view == null) view = context.LayoutInflater.Inflate(Resource.Layout.rowProduct, null);
 
-            String namePro = view.FindViewById<TextView>(Resource.Id.textCategoryRecipe).Text = recipe.Category.name;
-            String nameRecipe = view.FindViewById<TextView>(Resource.Id.textNameRecipe).Text = recipe.name;
-            String instructionRecipe = view.FindViewById<TextView>(Resource.Id.textInstructionRecipe).Text = recipe.instruction;
+            String nameProduct = view.FindViewById<TextView>(Resource.Id.nameProduct).Text = product.name;
+            String nameQuantity = view.FindViewById<TextView>(Resource.Id.quantityProduct).Text = product.quantity.ToString();
+            String measureProduct = view.FindViewById<TextView>(Resource.Id.unitMeasureProduct).Text = product.measure;
             
 
             return view;
