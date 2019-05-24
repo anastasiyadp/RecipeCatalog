@@ -32,7 +32,7 @@ namespace RecipeCatalog
                 db.CreateTables<Recipe, Category, Product, Ingredients>();
                 db.Close();
             }
-
+            
             DataInTables.CreateNotesInTables(dbPath);
         }
 

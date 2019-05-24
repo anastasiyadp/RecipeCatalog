@@ -29,6 +29,7 @@ namespace RecipeCatalog
 
             TextView textCategory = FindViewById<TextView>(Resource.Id.textCategory);
             ListView listView = FindViewById<ListView>(Resource.Id.listRecipes);
+            Button buttonNewRecipe = FindViewById<Button>(Resource.Id.buttonNewRecipe);
 
             //textCategory.Visibility = ViewStates.Invisible;
             String txtName = Intent.GetStringExtra("categoryName"); ;
@@ -59,6 +60,13 @@ namespace RecipeCatalog
                 StartActivity(intent);
             };
 
+            buttonNewRecipe.Click += ButtonNewRecipe_Click;
+        }
+
+        private void ButtonNewRecipe_Click(object sender, System.EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(EditRecipeActivity));
+            StartActivity(intent);
         }
     }
 }

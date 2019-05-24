@@ -27,10 +27,11 @@ namespace RecipeCatalog
             SetContentView(Resource.Layout.activity_main);
 
             DataBase.CreateDataBase("demo.db3");
-            
+
             listView = FindViewById<ListView>(Resource.Id.listCategories);
 
-            using (DataBase.db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), DataBase.dbPath))) {
+            using (DataBase.db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), DataBase.dbPath)))
+            {
                 var tableCategory = DataBase.db.Table<Category>();
 
                 foreach (Category category in tableCategory)
@@ -49,9 +50,7 @@ namespace RecipeCatalog
                 intent.PutExtra("categoryName", categoryName);
                 StartActivity(intent);
             };
-    
         }
-
         //public void SaveNote()
         //{
         //    recipe.name = nameText.Text;

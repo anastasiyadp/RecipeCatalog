@@ -19,9 +19,7 @@ namespace RecipeCatalog
     [Activity(Label = "RecipeActivity")]
     public class RecipeActivity : Activity
     {
-        
-        List<string> products = new List<string>();
-        List<ProductForList> products2 = new List<ProductForList>();
+        List<ProductForList> products = new List<ProductForList>();
         ListView listView;
         ArrayAdapter<string> adapter;
         Recipe currentRecipe;
@@ -42,30 +40,18 @@ namespace RecipeCatalog
                 currentRecipe = DataBase.db.GetAllWithChildren<Recipe>().First(recipe => recipe.Id == recipeId);
 
                  foreach (Product product in currentRecipe.products)
-            {
-                Ingredients ingredient = DataBase.db.GetAllWithChildren<Ingredients>().ToList().First(y => (y.id_recipe == recipeId) && (y.id_product == product.Id));
-                products2.Add(new ProductForList { name = product.name, quantity = ingredient.quantity, measure = product.unitMeasure });
-                    
-            }
+                {
+                    Ingredients ingredient = DataBase.db.GetAllWithChildren<Ingredients>().ToList().First(y => (y.id_recipe == recipeId) && (y.id_product == product.Id));
+                    products.Add(new ProductForList { name = product.name, quantity = ingredient.quantity, measure = product.unitMeasure });
+                }
 
                 DataBase.db.Close();
             };
-
+            
             textCategoryAndName.Text = currentRecipe.name;
             textInstruction.Text = currentRecipe.instruction;
 
-            //foreach (Product product in currentRecipe.products)
-            //{
-            //    products.Add(product.name);
-            //}
-
-
-
-
-            //adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, products);
-            //listView.Adapter = adapter;
-
-            listView.Adapter = new AdapterProduct(this, products2);
+            listView.Adapter = new AdapterProduct(this, products);
            
         }
     }

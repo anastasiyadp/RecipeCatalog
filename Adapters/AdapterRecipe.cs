@@ -37,7 +37,6 @@ namespace RecipeCatalog
         public override int Count
         {
             get { return recipes.Count;}
-            
         }
 
         public override View GetView(int position, View convertView, ViewGroup parent)
@@ -48,7 +47,13 @@ namespace RecipeCatalog
             if (view == null) view = context.LayoutInflater.Inflate(Resource.Layout.rowRecipesList, null);
 
             String nameRecipe = view.FindViewById<TextView>(Resource.Id.textNameRecipe).Text = recipe.name;
-            String instructionRecipe = view.FindViewById<TextView>(Resource.Id.textInstructionRecipe).Text = recipe.instruction;
+            String allIngredients ="";
+            foreach (Product product in recipe.products)
+            {
+                allIngredients += product.name + " ";
+            }
+
+            view.FindViewById<TextView>(Resource.Id.textAllIngredients).Text = allIngredients;
             
 
             return view;
