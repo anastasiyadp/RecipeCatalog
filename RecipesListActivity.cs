@@ -31,7 +31,6 @@ namespace RecipeCatalog
             ListView listView = FindViewById<ListView>(Resource.Id.listRecipes);
             Button buttonNewRecipe = FindViewById<Button>(Resource.Id.buttonNewRecipe);
 
-            //textCategory.Visibility = ViewStates.Invisible;
             String txtName = Intent.GetStringExtra("categoryName"); ;
 
             using (DataBase.db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), DataBase.dbPath)))
@@ -42,13 +41,12 @@ namespace RecipeCatalog
                 DataBase.db.Close();
             };
 
-            
             if (recipesList.Count == 0)
             {
-                //textCategory.Visibility = ViewStates.Visible;
                 textCategory.Text = "Рецептов в этой категории ещё нет";
                 return;
             }
+
             textCategory.Text = txtName;
 
             listView.Adapter = new AdapterRecipe(this, recipesList);
@@ -60,13 +58,11 @@ namespace RecipeCatalog
                 StartActivity(intent);
             };
 
-            buttonNewRecipe.Click += ButtonNewRecipe_Click;
-        }
-
-        private void ButtonNewRecipe_Click(object sender, System.EventArgs e)
-        {
-            Intent intent = new Intent(this, typeof(EditRecipeActivity));
-            StartActivity(intent);
+            buttonNewRecipe.Click += (sender, arg) =>
+            {
+                Intent intent = new Intent(this, typeof(EditRecipeActivity));
+                StartActivity(intent);
+            };
         }
     }
 }

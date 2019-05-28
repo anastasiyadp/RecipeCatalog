@@ -21,7 +21,6 @@ namespace RecipeCatalog
     {
         List<ProductForList> products = new List<ProductForList>();
         ListView listView;
-        ArrayAdapter<string> adapter;
         Recipe currentRecipe;
 
         protected override void OnCreate(Bundle savedInstanceState)

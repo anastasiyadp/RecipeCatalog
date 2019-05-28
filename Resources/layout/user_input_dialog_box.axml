@@ -3,21 +3,19 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+	<TextView
+		android:text="Кол-во/вес продукта"
+		android:textColor = "#000000"
+		android:textSize = "35px"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/textView1" />
 	<EditText
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:minWidth="25px"
 		android:minHeight="25px"
-		android:id="@+id/editTextNewName" />
-	<Spinner
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/spinner1" />
-	<EditText
-		android:layout_width="match_parent"
-		android:layout_height="131.0dp"
-		android:id="@+id/editTextNewInstruction" />
-
+		android:id="@+id/editTextQuantity"
+		android:hint ="Введите величину"/>
 
 </LinearLayout>

@@ -13,7 +13,8 @@
 	<EditText
 		android:layout_width="100dp"
 		android:layout_height="35.5dp"
-		android:id="@+id/editText1" />
+		android:id="@+id/editTextProduct"
+		android:hint ="Введите величину"/>
 	<TextView
 		android:text="unitMeasure"
 		android:layout_width="98.5dp"

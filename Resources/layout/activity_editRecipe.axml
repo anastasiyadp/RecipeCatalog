@@ -4,7 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 	<TextView
+		android:text="Выберите категорию"
+		android:textColor = "#000000"
+		android:textSize = "35px"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/textView4" />
+	<Spinner
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/spinner1" />
+	
+	<TextView
 		android:text="Введите название рецепта:"
+		android:textColor = "#000000"
+		android:textSize = "35px"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:minWidth="25px"
@@ -13,16 +27,26 @@
 	<EditText
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/editText1" />
+		android:id="@+id/editTextNameRecipe" />
 	<TextView
 		android:text="Выберите продукты:"
+		android:textColor = "#000000"
+		android:textSize = "35px"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/textView2" />
-	<MultiSelectSpinner
+
+	<AutoCompleteTextView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/multiSelectSpinner1" />
+		android:hint ="Начните вводить название продукта"
+		android:id="@+id/autoCompleteTextView1" />
+	<Button
+		android:text="Добавить продукт"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/buttonAddProduct" />
+
 	<ListView
 		android:minWidth="25px"
 		android:minHeight="25px"
@@ -32,6 +56,8 @@
 
 	<TextView
 		android:text="Напишите инструкцию:"
+		android:textColor = "#000000"
+		android:textSize = "35px"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/textView3" />
@@ -39,11 +65,11 @@
 	<EditText
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/editText2" />
+		android:id="@+id/editTextInstructionRecipe" />
 	<Button
 		android:text="Сохранить данные"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/button1" />
+		android:id="@+id/saveData" />
 
 </LinearLayout>

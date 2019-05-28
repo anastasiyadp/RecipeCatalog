@@ -36,20 +36,40 @@ namespace RecipeCatalog
             DataInTables.CreateNotesInTables(dbPath);
         }
 
-       
-        //var storedValuation = db.GetWithChildren<Category>(1);
-        //var x = db.GetWithChildren<Recipe>(1);
-        // var t = db.Table<Category>().FirstOrDefault(y => y.Id == 1);
-       
-
-        static public void GetNote()
+        static public Product GetProduct(string name)
         {
-            
+            using (db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), dbPath)))
+            {
+                Product product = db.GetAllWithChildren<Product>().First(prod => prod.name == name);
+                db.Close();
+                return product;
+            }
         }
 
         static public void AddNote(Recipe recipe)
         {
             db.Insert(recipe);
+        }
+
+        static public void AddNewRecipe(Recipe newRecipe, string currentCategoryName, List<int> mera)
+        {
+            using (db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), dbPath)))
+            {
+                AddNote(newRecipe);
+                db.UpdateWithChildren(newRecipe);
+                Recipe recipe = db.GetAllWithChildren<Recipe>().ToList().Last();
+                Category category = db.GetAllWithChildren<Category>().ToList().First(y => y.name == currentCategoryName);
+                category.recipes.Add(recipe);
+                db.UpdateWithChildren(category);
+
+                for (int i = 0; i < recipe.products.Count; i++)
+                {
+                    Ingredients ingredient = db.Table<Ingredients>().ToList().First(y => (y.id_recipe == recipe.Id) && (y.id_product == recipe.products[i].Id));
+                    ingredient.quantity = mera[i];
+                    db.UpdateWithChildren(ingredient);
+                }
+                db.Close();
+            }
         }
 
         static public void SaveNote(Recipe recipe)

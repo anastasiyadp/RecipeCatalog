@@ -59,6 +59,7 @@
     <Compile Include="Adapters\AdapterProduct.cs" />
     <Compile Include="Adapters\AdapterRecipe.cs" />
     <Compile Include="DataBase.cs" />
+    <Compile Include="Models\EditModel.cs" />
     <Compile Include="EditRecipeActivity.cs" />
     <Compile Include="Adapters\EditRecipeAdapter.cs" />
     <Compile Include="MainActivity.cs" />
@@ -68,7 +69,6 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductForList.cs" />
     <Compile Include="Models\Recipe.cs" />
-    <Compile Include="MultiSelectSpinner.cs" />
     <Compile Include="RecipeActivity.cs" />
     <Compile Include="RecipesListActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -135,17 +135,17 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_newRecipe.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_editRecipe.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\rowEditProduct.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\user_input_dialog_box.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

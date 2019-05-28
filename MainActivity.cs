@@ -51,51 +51,6 @@ namespace RecipeCatalog
                 StartActivity(intent);
             };
         }
-        //public void SaveNote()
-        //{
-        //    recipe.name = nameText.Text;
-        //    recipe.instruction = instructionText.Text;
-        //    dataBase.SaveNote(recipe);
-        //    ((BaseAdapter)listView.Adapter).NotifyDataSetChanged();
-        //}
-
-        //public void CreateNote()
-        //{
-        //    nameText.Text = "";
-        //    instructionText.Text = "";
-        //    nameText.Visibility = Android.Views.ViewStates.Visible;
-        //    instructionText.Visibility = Android.Views.ViewStates.Visible;
-        //}
-
-        //public void AddNote()
-        //{
-        //    Recipe newRecipe = new Recipe();
-        //    newRecipe.name = nameText.Text;
-        //    newRecipe.instruction = instructionText.Text;
-        //    listRecipes.Add(newRecipe);
-        //    dataBase.AddNote(newRecipe);
-        //    ((BaseAdapter)listView.Adapter).NotifyDataSetChanged();
-        //    nameText.Visibility = Android.Views.ViewStates.Invisible;
-        //    instructionText.Visibility = Android.Views.ViewStates.Invisible;
-        //}
-
-        //public void DeleteNote()
-        //{
-        //    listRecipes.Remove(recipe);
-        //    dataBase.DeleteNote(recipe);
-        //    ((BaseAdapter)listView.Adapter).NotifyDataSetChanged();
-        //}
-
-
-        //public void CreateListRecipes()
-        //{
-        //    var table = dataBase.db.GetAllWithChildren<Recipe>();
-        //    foreach (var s in table)
-        //    {
-        //        listRecipes.Add(s);
-        //        Console.WriteLine(s.Id + " " + s.name + " " + s.instruction + " " + s.Category.name);
-        //    }
-
-        //}
+       
     }
 }
