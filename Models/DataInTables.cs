@@ -118,18 +118,10 @@ namespace RecipeCatalog.Models
                     {
                         for (int j = 0; j < recipes[i].products.Count; j++)
                         {
-                            Ingredients ingredient = db.Table<Ingredients>().ToList().First(y => (y.id_recipe == recipes[i].Id) && (y.id_product == recipes[i].products[j].Id));
+                            Ingredients ingredient = db.Table<Ingredients>().ToList().First(currentIngredient => (currentIngredient.id_recipe == recipes[i].Id) && (currentIngredient.id_product == recipes[i].products[j].Id));
                             ingredient.quantity = mera[i][j];
                             db.UpdateWithChildren(ingredient);
                         }
-                    }
-
-                    
-
-                    var table = db.GetAllWithChildren<Ingredients>();
-                    foreach (var s in table)
-                    {
-                        Console.WriteLine("hehehehy  " + s.id_recipe + " " + s.id_product + " " + s.quantity );
                     }
 
                     categories[0].recipes = new List<Recipe> { recipes[1], recipes[2] };

@@ -14,17 +14,15 @@ using static Android.Support.V7.Widget.RecyclerView;
 
 namespace RecipeCatalog
 {
-    class EditRecipeAdapter : BaseAdapter<ProductForList>
+    class AddRecipeAdapter : BaseAdapter<ProductForList>
     {
-        public List<EditModel> editModelList;
         List<ProductForList> products;
         Activity context;
 
-        public EditRecipeAdapter(Activity context, List<ProductForList> products, List<EditModel> editModelList) : base()
+        public AddRecipeAdapter(Activity context, List<ProductForList> products) : base()
         {
             this.context = context;
             this.products = products;
-            this.editModelList = editModelList;
         }
 
         public override long GetItemId(int position)
@@ -53,7 +51,6 @@ namespace RecipeCatalog
 
             String nameProduct = view.FindViewById<TextView>(Resource.Id.nameProduct).Text = product.name;
             EditText editText = view.FindViewById<EditText>(Resource.Id.editTextProduct);
-           
             String measureProduct = view.FindViewById<TextView>(Resource.Id.unitMeasureProduct).Text = product.measure;
 
 

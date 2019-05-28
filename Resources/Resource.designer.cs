@@ -3068,7 +3068,7 @@ namespace RecipeCatalog
 			public const int abc_select_dialog_material = 2130968602;
 			
 			// aapt resource value: 0x7f04001b
-			public const int activity_editRecipe = 2130968603;
+			public const int activity_addRecipe = 2130968603;
 			
 			// aapt resource value: 0x7f04001c
 			public const int activity_main = 2130968604;

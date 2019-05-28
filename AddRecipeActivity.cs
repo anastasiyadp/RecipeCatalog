@@ -17,7 +17,7 @@ using SQLiteNetExtensions.Extensions;
 namespace RecipeCatalog
 {
     [Activity(Label = "EditRecipeActivity")]
-    public class EditRecipeActivity: Activity
+    public class AddRecipeActivity: Activity
     {
         List<string> productsNames = new List<string>();
         List<string> categoryNames = new List<string>();
@@ -34,7 +34,7 @@ namespace RecipeCatalog
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.activity_editRecipe);
+            SetContentView(Resource.Layout.activity_addRecipe);
 
             editTextNameRecipe = FindViewById<EditText>(Resource.Id.editTextNameRecipe);
             editTextInstructionRecipe = FindViewById<EditText>(Resource.Id.editTextInstructionRecipe);
@@ -73,10 +73,10 @@ namespace RecipeCatalog
             spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
         }
 
-        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs arg)
         {
-            currentCategoryName = categoryNames[e.Position];
-            string toast = string.Format("Selected car is {0}", spinner.GetItemAtPosition(e.Position));
+            currentCategoryName = categoryNames[arg.Position];
+            string toast = string.Format("Selected car is {0}", spinner.GetItemAtPosition(arg.Position));
             Toast.MakeText(this, toast, ToastLength.Long).Show();
         }
 
@@ -126,8 +126,8 @@ namespace RecipeCatalog
         }
         private void SaveButtonClick(object sender, EventArgs arg)
         {
-            using (DataBase.db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), DataBase.dbPath)))
-            {
+            //using (DataBase.db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), DataBase.dbPath)))
+            //{
                 
                 Product newProduct = new Product();
                 List<Product> listproducts = new List<Product>();
@@ -136,16 +136,19 @@ namespace RecipeCatalog
                 newRecipe.name = editTextNameRecipe.Text;
                 newRecipe.instruction = editTextInstructionRecipe.Text;
                 newRecipe.products = new List<Product>();
-                foreach (var s in products)
+                foreach (ProductForList product in products)
                 {
                     //Product prod = DataBase.db.Table<Product>().ToList().First(y => y.name == s.name);
-                    Product prod = DataBase.GetProduct(s.name);
+                    Product prod = DataBase.GetProduct(product.name);
                     newRecipe.products.Add(prod);
-                    mera.Add(s.quantity);
+                    mera.Add(product.quantity);
                 }
 
                 DataBase.AddNewRecipe(newRecipe, currentCategoryName, mera);
-            }
+            //}
+
+            Intent intent = new Intent(this, typeof(MainActivity));
+            StartActivity(intent);
         }
     }
 }

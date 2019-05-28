@@ -41,6 +41,12 @@ namespace RecipeCatalog
                 DataBase.db.Close();
             };
 
+            buttonNewRecipe.Click += (sender, arg) =>
+            {
+                Intent intent = new Intent(this, typeof(AddRecipeActivity));
+                StartActivity(intent);
+            };
+
             if (recipesList.Count == 0)
             {
                 textCategory.Text = "Рецептов в этой категории ещё нет";
@@ -58,11 +64,7 @@ namespace RecipeCatalog
                 StartActivity(intent);
             };
 
-            buttonNewRecipe.Click += (sender, arg) =>
-            {
-                Intent intent = new Intent(this, typeof(EditRecipeActivity));
-                StartActivity(intent);
-            };
+          
         }
     }
 }

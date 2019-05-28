@@ -39,10 +39,10 @@ namespace RecipeCatalog
                 currentRecipe = DataBase.db.GetAllWithChildren<Recipe>().First(recipe => recipe.Id == recipeId);
 
                  foreach (Product product in currentRecipe.products)
-                {
+                 {
                     Ingredients ingredient = DataBase.db.GetAllWithChildren<Ingredients>().ToList().First(y => (y.id_recipe == recipeId) && (y.id_product == product.Id));
                     products.Add(new ProductForList { name = product.name, quantity = ingredient.quantity, measure = product.unitMeasure });
-                }
+                 }
 
                 DataBase.db.Close();
             };

@@ -59,9 +59,8 @@
     <Compile Include="Adapters\AdapterProduct.cs" />
     <Compile Include="Adapters\AdapterRecipe.cs" />
     <Compile Include="DataBase.cs" />
-    <Compile Include="Models\EditModel.cs" />
-    <Compile Include="EditRecipeActivity.cs" />
-    <Compile Include="Adapters\EditRecipeAdapter.cs" />
+    <Compile Include="AddRecipeActivity.cs" />
+    <Compile Include="Adapters\AddRecipeAdapter.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\DataInTables.cs" />
@@ -135,7 +134,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_editRecipe.axml">
+    <AndroidResource Include="Resources\layout\activity_addRecipe.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
